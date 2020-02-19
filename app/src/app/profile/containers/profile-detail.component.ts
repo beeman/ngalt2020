@@ -7,7 +7,7 @@ import { Profile } from 'src/sdk';
 
 @Component({
   template: `
-    <app-page>
+    <div class="container">
       <ng-container *ngIf="profile$ | async as profile; else loading">
         <div class="card mb-5">
           <div class="card-body" *ngIf="profile">
@@ -19,9 +19,9 @@ import { Profile } from 'src/sdk';
         </div>
       </ng-container>
       <ng-template #loading>
-        <app-loading [loading]="true"></app-loading>
+        <ui-loading [loading]="true"></ui-loading>
       </ng-template>
-    </app-page>
+    </div>
   `,
 })
 export class ProfileDetailComponent implements OnInit {

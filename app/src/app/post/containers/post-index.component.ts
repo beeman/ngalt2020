@@ -22,7 +22,7 @@ import { PostActions } from '../actions/post.actions';
             </div>
           </ng-container>
           <ng-template #loading>
-            <app-loading [loading]="true"></app-loading>
+            <ui-loading [loading]="true"></ui-loading>
           </ng-template>
         </div>
       </div>

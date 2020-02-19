@@ -15,8 +15,8 @@ import { Observable } from 'rxjs';
           <div class="media-body">
             <ng-container *ngIf="fields.length">
               <div>
-                <web-form #formEl [form]="form" [model]="model" [fields]="fields" (action)="submit()">
-                </web-form>
+                <ui-form #formEl [form]="form" [model]="model" [fields]="fields" (action)="submit()">
+                </ui-form>
               </div>
               <div class="text-right mt-3">
                 <button disabled="true" class="btn ">
