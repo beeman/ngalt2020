@@ -8,11 +8,11 @@ export class PostService {
   constructor(private prisma: PrismaService) {}
 
   posts() {
-    return this.prisma.client.posts({ orderBy: 'createdAt_DESC', first: 25 });
+    return this.prisma.client.posts({ orderBy: 'created_DESC', first: 25 });
   }
 
   userPosts(userId: string) {
-    return this.prisma.client.posts({ where: { author: { id: userId }}, orderBy: 'createdAt_DESC', first: 25 });
+    return this.prisma.client.posts({ where: { author: { id: userId }}, orderBy: 'created_DESC', first: 25 });
   }
 
   post({ id }) {

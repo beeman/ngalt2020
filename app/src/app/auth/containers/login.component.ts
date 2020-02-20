@@ -1,70 +1,60 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core'
+import { FormGroup } from '@angular/forms'
+import { ActivatedRoute, Router } from '@angular/router'
+import { FormHelper } from '@kikstart/ui'
+import { filter, map } from 'rxjs/operators'
 
-import { AuthService } from '../auth.service';
-import { filter, map } from 'rxjs/operators';
-import {FormHelper} from "@kikstart/ui";
+import { AuthService } from '../auth.service'
+import { brand } from '../../app.config'
 
 @Component({
   template: `
-    <auth-page
-      [form]="form"
+    <ui-auth
+      [brand]="brand"
       [fields]="fields"
+      [form]="form"
       label="Log in"
       (action)="handleAction($event)"
-    ></auth-page>
+      [links]="[
+        { label: 'Log in', path: '/login' },
+        { label: 'Register', path: '/register' }
+      ]"
+    ></ui-auth>
   `,
-  styles: []
 })
 export class LoginComponent implements OnInit {
-  form = new FormGroup({});
+  public brand = brand
+  form = new FormGroup({})
   fields: FormHelper[] = [
-    FormHelper.email(
-      'email',
-      {
-        label: 'Email',
-        required: true,
-      },
-    ),
-    FormHelper.password(
-      'password',
-      {
-        label: 'Password',
-        required: true,
-      },
-    ),
-  ];
+    FormHelper.email('email', {
+      label: 'Email',
+      required: true,
+    }),
+    FormHelper.password('password', {
+      label: 'Password',
+      required: true,
+    }),
+  ]
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    public auth: AuthService,
-    // private toastr: NbToastrService,
-  ) {}
+  constructor(private route: ActivatedRoute, private router: Router, public auth: AuthService) {}
 
   ngOnInit() {
-    // this.auth.setMessage(null);
     this.route.queryParams
       .pipe(
-        map(params => params['token']),
+        map(params => params.token),
         filter(token => !!token),
-        // tap(token => this.auth.storeToken(token)),
       )
-      .subscribe(() => this.router.navigate(['/']));
+      .subscribe(() => this.router.navigate(['/']))
   }
 
   async handleAction({ payload }) {
-    this.form.disable();
-    return this.auth
-      .login(payload)
-      .subscribe(
-        res => {
-          console.log('YAY USER LOGGED IN', res);
-          return this.router.navigate(['/']);
-        },
-        err => {
-          this.form.enable();
-        })
+    this.form.disable()
+    return this.auth.login(payload).subscribe(
+      () => {
+        return this.router.navigate(['/'])
+      },
+      () => this.form.enable(),
+      () => this.form.enable(),
+    )
   }
 }

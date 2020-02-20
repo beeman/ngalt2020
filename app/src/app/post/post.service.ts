@@ -1,37 +1,66 @@
-import { Injectable } from '@angular/core';
-import { Comment, GraphQLService, Post } from 'src/sdk';
-import { map } from 'rxjs/operators';
-import { BsModalService } from 'ngx-bootstrap';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core'
+import { BsModalService } from 'ngx-bootstrap'
+import { Observable } from 'rxjs'
+import { map } from 'rxjs/operators'
 
-import { AuthService } from 'src/app/auth';
+import { AuthService } from 'src/app/auth'
+import { ApolloAngularSDK, Comment, Post } from 'src/sdk'
+import { PostActions } from './actions/post.actions'
 
-import { PostCommentsComponent } from './components/post-comments.component';
+import { PostModalComponent } from './components/post-modal.component'
+
+const formatPost = (post: Post) => ({
+  ...post,
+  author: {
+    ...post.author,
+    path: '/profiles/' + post.author.username,
+  },
+  buttons: [
+    {
+      icon: 'fa fa-fw fa-comment',
+      label: `${post.commentCount} Comments`,
+      payload: { id: post.id },
+      type: PostActions.SHOW_COMMENTS,
+    },
+  ],
+})
+
+const formatPosts = (posts: Post[]) => posts.map(formatPost)
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostService {
-  constructor(private auth: AuthService, private graphql: GraphQLService, private modalService: BsModalService) {}
+  constructor(
+    private auth: AuthService,
+    private sdk: ApolloAngularSDK,
+    private modalService: BsModalService,
+  ) {}
 
   posts() {
-    return this.graphql.posts().pipe(map(result => result.data.posts as Post[]));
+    return this.sdk.posts().pipe(
+      map(result => result.data.posts),
+      map(formatPosts),
+    )
   }
 
   post(id: string) {
-    return this.graphql.post(id).pipe(map(result => result.data.post as Post));
+    return this.sdk.post({ id }).pipe(
+      map(result => result.data.post),
+      map(formatPost),
+    )
+  }
+
+  createPost({ text }) {
+    return this.sdk.createPost({ data: { text } })
   }
 
   comments(postId: string) {
-    return this.graphql.comments(postId).pipe(map(result => result.data.comments as Comment[]));
+    return this.sdk.comments({ postId }).pipe(map(result => result.data.comments as Comment[]))
   }
 
-  createPost(payload: any) {
-    return this.graphql.createPost(payload);
-  }
-
-  createComment(postId, { text}) {
-    return this.graphql.createComment(postId, { text });
+  createComment(postId, { text }) {
+    return this.sdk.createComment({ data: { postId, text } })
   }
 
   openComments({
@@ -40,21 +69,24 @@ export class PostService {
     post,
     comments,
   }: {
-    handler?: (data) => Observable<any>;
-    title?: string;
-    post?: Post;
-    comments?: Comment[];
+    handler?: (data) => Observable<any>
+    title?: string
+    post?: Post
+    comments?: Comment[]
   }) {
-    const fetcher = id => this.comments(id);
-    this.modalService.show(PostCommentsComponent, {
+    const fetcher = id => this.comments(id)
+    const showPost = { ...post }
+    // @ts-ignore
+    delete showPost.buttons
+    this.modalService.show(PostModalComponent, {
       initialState: {
         title,
         handler,
         fetcher,
         author$: this.auth.user$,
-        post,
+        post: showPost,
         // comments: ,
       },
-    });
+    })
   }
 }

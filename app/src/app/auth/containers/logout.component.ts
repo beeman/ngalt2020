@@ -5,7 +5,7 @@ import { AuthService } from '../auth.service';
 
 @Component({
   template: `
-    <auth-page label="Log out..."></auth-page>
+    <ui-auth label="Log out..."></ui-auth>
   `,
 })
 export class LogoutComponent implements OnInit {

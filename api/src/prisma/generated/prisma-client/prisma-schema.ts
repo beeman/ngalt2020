@@ -20,8 +20,8 @@ type BatchPayload {
 
 type Comment {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created: DateTime!
+  updated: DateTime!
   text: String!
   post: Post!
   author: User!
@@ -59,18 +59,18 @@ type CommentEdge {
 enum CommentOrderByInput {
   id_ASC
   id_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
+  created_ASC
+  created_DESC
+  updated_ASC
+  updated_DESC
   text_ASC
   text_DESC
 }
 
 type CommentPreviousValues {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created: DateTime!
+  updated: DateTime!
   text: String!
 }
 
@@ -89,22 +89,22 @@ input CommentScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  createdAt: DateTime
-  createdAt_not: DateTime
-  createdAt_in: [DateTime!]
-  createdAt_not_in: [DateTime!]
-  createdAt_lt: DateTime
-  createdAt_lte: DateTime
-  createdAt_gt: DateTime
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-  updatedAt_not: DateTime
-  updatedAt_in: [DateTime!]
-  updatedAt_not_in: [DateTime!]
-  updatedAt_lt: DateTime
-  updatedAt_lte: DateTime
-  updatedAt_gt: DateTime
-  updatedAt_gte: DateTime
+  created: DateTime
+  created_not: DateTime
+  created_in: [DateTime!]
+  created_not_in: [DateTime!]
+  created_lt: DateTime
+  created_lte: DateTime
+  created_gt: DateTime
+  created_gte: DateTime
+  updated: DateTime
+  updated_not: DateTime
+  updated_in: [DateTime!]
+  updated_not_in: [DateTime!]
+  updated_lt: DateTime
+  updated_lte: DateTime
+  updated_gt: DateTime
+  updated_gte: DateTime
   text: String
   text_not: String
   text_in: [String!]
@@ -204,22 +204,22 @@ input CommentWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  createdAt: DateTime
-  createdAt_not: DateTime
-  createdAt_in: [DateTime!]
-  createdAt_not_in: [DateTime!]
-  createdAt_lt: DateTime
-  createdAt_lte: DateTime
-  createdAt_gt: DateTime
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-  updatedAt_not: DateTime
-  updatedAt_in: [DateTime!]
-  updatedAt_not_in: [DateTime!]
-  updatedAt_lt: DateTime
-  updatedAt_lte: DateTime
-  updatedAt_gt: DateTime
-  updatedAt_gte: DateTime
+  created: DateTime
+  created_not: DateTime
+  created_in: [DateTime!]
+  created_not_in: [DateTime!]
+  created_lt: DateTime
+  created_lte: DateTime
+  created_gt: DateTime
+  created_gte: DateTime
+  updated: DateTime
+  updated_not: DateTime
+  updated_in: [DateTime!]
+  updated_not_in: [DateTime!]
+  updated_lt: DateTime
+  updated_lte: DateTime
+  updated_gt: DateTime
+  updated_gte: DateTime
   text: String
   text_not: String
   text_in: [String!]
@@ -289,8 +289,8 @@ type PageInfo {
 
 type Post {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created: DateTime!
+  updated: DateTime!
   text: String!
   author: User!
   comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment!]
@@ -351,10 +351,10 @@ type PostEdge {
 enum PostOrderByInput {
   id_ASC
   id_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
+  created_ASC
+  created_DESC
+  updated_ASC
+  updated_DESC
   text_ASC
   text_DESC
   commentCount_ASC
@@ -365,8 +365,8 @@ enum PostOrderByInput {
 
 type PostPreviousValues {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created: DateTime!
+  updated: DateTime!
   text: String!
   commentCount: Int!
   likeCount: Int!
@@ -387,22 +387,22 @@ input PostScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  createdAt: DateTime
-  createdAt_not: DateTime
-  createdAt_in: [DateTime!]
-  createdAt_not_in: [DateTime!]
-  createdAt_lt: DateTime
-  createdAt_lte: DateTime
-  createdAt_gt: DateTime
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-  updatedAt_not: DateTime
-  updatedAt_in: [DateTime!]
-  updatedAt_not_in: [DateTime!]
-  updatedAt_lt: DateTime
-  updatedAt_lte: DateTime
-  updatedAt_gt: DateTime
-  updatedAt_gte: DateTime
+  created: DateTime
+  created_not: DateTime
+  created_in: [DateTime!]
+  created_not_in: [DateTime!]
+  created_lt: DateTime
+  created_lte: DateTime
+  created_gt: DateTime
+  created_gte: DateTime
+  updated: DateTime
+  updated_not: DateTime
+  updated_in: [DateTime!]
+  updated_not_in: [DateTime!]
+  updated_lt: DateTime
+  updated_lte: DateTime
+  updated_gt: DateTime
+  updated_gte: DateTime
   text: String
   text_not: String
   text_in: [String!]
@@ -548,22 +548,22 @@ input PostWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  createdAt: DateTime
-  createdAt_not: DateTime
-  createdAt_in: [DateTime!]
-  createdAt_not_in: [DateTime!]
-  createdAt_lt: DateTime
-  createdAt_lte: DateTime
-  createdAt_gt: DateTime
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-  updatedAt_not: DateTime
-  updatedAt_in: [DateTime!]
-  updatedAt_not_in: [DateTime!]
-  updatedAt_lt: DateTime
-  updatedAt_lte: DateTime
-  updatedAt_gt: DateTime
-  updatedAt_gte: DateTime
+  created: DateTime
+  created_not: DateTime
+  created_in: [DateTime!]
+  created_not_in: [DateTime!]
+  created_lt: DateTime
+  created_lte: DateTime
+  created_gt: DateTime
+  created_gte: DateTime
+  updated: DateTime
+  updated_not: DateTime
+  updated_in: [DateTime!]
+  updated_not_in: [DateTime!]
+  updated_lt: DateTime
+  updated_lte: DateTime
+  updated_gt: DateTime
+  updated_gte: DateTime
   text: String
   text_not: String
   text_in: [String!]
@@ -623,6 +623,11 @@ type Query {
   node(id: ID!): Node
 }
 
+enum Role {
+  ADMIN
+  USER
+}
+
 type Subscription {
   comment(where: CommentSubscriptionWhereInput): CommentSubscriptionPayload
   post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
@@ -631,14 +636,13 @@ type Subscription {
 
 type User {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created: DateTime!
+  updated: DateTime!
   username: String!
   email: String!
   password: String!
+  role: Role!
   name: String
-  bio: String
-  location: String
   avatar: String
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
 }
@@ -654,9 +658,8 @@ input UserCreateInput {
   username: String!
   email: String!
   password: String!
+  role: Role
   name: String
-  bio: String
-  location: String
   avatar: String
   posts: PostCreateManyWithoutAuthorInput
 }
@@ -681,9 +684,8 @@ input UserCreateWithoutPostsInput {
   username: String!
   email: String!
   password: String!
+  role: Role
   name: String
-  bio: String
-  location: String
   avatar: String
 }
 
@@ -695,36 +697,33 @@ type UserEdge {
 enum UserOrderByInput {
   id_ASC
   id_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
+  created_ASC
+  created_DESC
+  updated_ASC
+  updated_DESC
   username_ASC
   username_DESC
   email_ASC
   email_DESC
   password_ASC
   password_DESC
+  role_ASC
+  role_DESC
   name_ASC
   name_DESC
-  bio_ASC
-  bio_DESC
-  location_ASC
-  location_DESC
   avatar_ASC
   avatar_DESC
 }
 
 type UserPreviousValues {
   id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  created: DateTime!
+  updated: DateTime!
   username: String!
   email: String!
   password: String!
+  role: Role!
   name: String
-  bio: String
-  location: String
   avatar: String
 }
 
@@ -743,22 +742,22 @@ input UserScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  createdAt: DateTime
-  createdAt_not: DateTime
-  createdAt_in: [DateTime!]
-  createdAt_not_in: [DateTime!]
-  createdAt_lt: DateTime
-  createdAt_lte: DateTime
-  createdAt_gt: DateTime
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-  updatedAt_not: DateTime
-  updatedAt_in: [DateTime!]
-  updatedAt_not_in: [DateTime!]
-  updatedAt_lt: DateTime
-  updatedAt_lte: DateTime
-  updatedAt_gt: DateTime
-  updatedAt_gte: DateTime
+  created: DateTime
+  created_not: DateTime
+  created_in: [DateTime!]
+  created_not_in: [DateTime!]
+  created_lt: DateTime
+  created_lte: DateTime
+  created_gt: DateTime
+  created_gte: DateTime
+  updated: DateTime
+  updated_not: DateTime
+  updated_in: [DateTime!]
+  updated_not_in: [DateTime!]
+  updated_lt: DateTime
+  updated_lte: DateTime
+  updated_gt: DateTime
+  updated_gte: DateTime
   username: String
   username_not: String
   username_in: [String!]
@@ -801,6 +800,10 @@ input UserScalarWhereInput {
   password_not_starts_with: String
   password_ends_with: String
   password_not_ends_with: String
+  role: Role
+  role_not: Role
+  role_in: [Role!]
+  role_not_in: [Role!]
   name: String
   name_not: String
   name_in: [String!]
@@ -815,34 +818,6 @@ input UserScalarWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
-  bio: String
-  bio_not: String
-  bio_in: [String!]
-  bio_not_in: [String!]
-  bio_lt: String
-  bio_lte: String
-  bio_gt: String
-  bio_gte: String
-  bio_contains: String
-  bio_not_contains: String
-  bio_starts_with: String
-  bio_not_starts_with: String
-  bio_ends_with: String
-  bio_not_ends_with: String
-  location: String
-  location_not: String
-  location_in: [String!]
-  location_not_in: [String!]
-  location_lt: String
-  location_lte: String
-  location_gt: String
-  location_gte: String
-  location_contains: String
-  location_not_contains: String
-  location_starts_with: String
-  location_not_starts_with: String
-  location_ends_with: String
-  location_not_ends_with: String
   avatar: String
   avatar_not: String
   avatar_in: [String!]
@@ -880,13 +855,12 @@ input UserSubscriptionWhereInput {
   NOT: [UserSubscriptionWhereInput!]
 }
 
-input UserUpdateDataInput {
+input UserupdatedaInput {
   username: String
   email: String
   password: String
+  role: Role
   name: String
-  bio: String
-  location: String
   avatar: String
   posts: PostUpdateManyWithoutAuthorInput
 }
@@ -895,9 +869,8 @@ input UserUpdateInput {
   username: String
   email: String
   password: String
+  role: Role
   name: String
-  bio: String
-  location: String
   avatar: String
   posts: PostUpdateManyWithoutAuthorInput
 }
@@ -906,9 +879,8 @@ input UserUpdateManyDataInput {
   username: String
   email: String
   password: String
+  role: Role
   name: String
-  bio: String
-  location: String
   avatar: String
 }
 
@@ -928,9 +900,8 @@ input UserUpdateManyMutationInput {
   username: String
   email: String
   password: String
+  role: Role
   name: String
-  bio: String
-  location: String
   avatar: String
 }
 
@@ -941,7 +912,7 @@ input UserUpdateManyWithWhereNestedInput {
 
 input UserUpdateOneRequiredInput {
   create: UserCreateInput
-  update: UserUpdateDataInput
+  update: UserupdatedaInput
   upsert: UserUpsertNestedInput
   connect: UserWhereUniqueInput
 }
@@ -957,19 +928,18 @@ input UserUpdateWithoutPostsDataInput {
   username: String
   email: String
   password: String
+  role: Role
   name: String
-  bio: String
-  location: String
   avatar: String
 }
 
 input UserUpdateWithWhereUniqueNestedInput {
   where: UserWhereUniqueInput!
-  data: UserUpdateDataInput!
+  data: UserupdatedaInput!
 }
 
 input UserUpsertNestedInput {
-  update: UserUpdateDataInput!
+  update: UserupdatedaInput!
   create: UserCreateInput!
 }
 
@@ -980,7 +950,7 @@ input UserUpsertWithoutPostsInput {
 
 input UserUpsertWithWhereUniqueNestedInput {
   where: UserWhereUniqueInput!
-  update: UserUpdateDataInput!
+  update: UserupdatedaInput!
   create: UserCreateInput!
 }
 
@@ -999,22 +969,22 @@ input UserWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  createdAt: DateTime
-  createdAt_not: DateTime
-  createdAt_in: [DateTime!]
-  createdAt_not_in: [DateTime!]
-  createdAt_lt: DateTime
-  createdAt_lte: DateTime
-  createdAt_gt: DateTime
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-  updatedAt_not: DateTime
-  updatedAt_in: [DateTime!]
-  updatedAt_not_in: [DateTime!]
-  updatedAt_lt: DateTime
-  updatedAt_lte: DateTime
-  updatedAt_gt: DateTime
-  updatedAt_gte: DateTime
+  created: DateTime
+  created_not: DateTime
+  created_in: [DateTime!]
+  created_not_in: [DateTime!]
+  created_lt: DateTime
+  created_lte: DateTime
+  created_gt: DateTime
+  created_gte: DateTime
+  updated: DateTime
+  updated_not: DateTime
+  updated_in: [DateTime!]
+  updated_not_in: [DateTime!]
+  updated_lt: DateTime
+  updated_lte: DateTime
+  updated_gt: DateTime
+  updated_gte: DateTime
   username: String
   username_not: String
   username_in: [String!]
@@ -1057,6 +1027,10 @@ input UserWhereInput {
   password_not_starts_with: String
   password_ends_with: String
   password_not_ends_with: String
+  role: Role
+  role_not: Role
+  role_in: [Role!]
+  role_not_in: [Role!]
   name: String
   name_not: String
   name_in: [String!]
@@ -1071,34 +1045,6 @@ input UserWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
-  bio: String
-  bio_not: String
-  bio_in: [String!]
-  bio_not_in: [String!]
-  bio_lt: String
-  bio_lte: String
-  bio_gt: String
-  bio_gte: String
-  bio_contains: String
-  bio_not_contains: String
-  bio_starts_with: String
-  bio_not_starts_with: String
-  bio_ends_with: String
-  bio_not_ends_with: String
-  location: String
-  location_not: String
-  location_in: [String!]
-  location_not_in: [String!]
-  location_lt: String
-  location_lte: String
-  location_gt: String
-  location_gte: String
-  location_contains: String
-  location_not_contains: String
-  location_starts_with: String
-  location_not_starts_with: String
-  location_ends_with: String
-  location_not_ends_with: String
   avatar: String
   avatar_not: String
   avatar_in: [String!]

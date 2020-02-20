@@ -11,7 +11,7 @@ type Auth {
 
 type Comment {
   id: String!
-  createdAt: Date!
+  created: Date!
   text: String!
   author: Profile!
   post: Post!
@@ -57,7 +57,7 @@ type Mutation {
 
 type Post {
   id: String!
-  createdAt: Date!
+  created: Date!
   text: String!
   author: Profile!
   commentCount: Float!
@@ -67,7 +67,7 @@ type Post {
 
 type Profile {
   id: String!
-  createdAt: Date!
+  created: Date!
   username: String
   name: String
   avatar: String
@@ -86,8 +86,8 @@ type Query {
   posts: [Post!]!
   userPosts(userId: String!): [Post!]!
   post(id: String!): Post!
-  profiles: [Profile!]!
-  profile(username: String!): Profile!
+  profiles: [Profile!]
+  profile(username: String!): Profile
 }
 
 input RegisterInput {
@@ -117,11 +117,11 @@ input UpdateUserPasswordInput {
 
 type User {
   id: String!
-  createdAt: Date!
-  updatedAt: Date!
+  created: Date!
+  updated: Date!
   email: String!
   username: String
   name: String
   avatar: String
-  role: Role!
+  role: Role
 }

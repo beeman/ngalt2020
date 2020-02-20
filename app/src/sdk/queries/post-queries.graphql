@@ -8,7 +8,7 @@ fragment authorDetails on Profile {
 fragment postDetails on Post {
   id
   text
-  createdAt
+  created
   commentCount
   author { ...authorDetails }
 }
@@ -16,7 +16,7 @@ fragment postDetails on Post {
 fragment commentDetails on Comment {
   id
   text
-  createdAt
+  created
   author { ...authorDetails }
 }
 

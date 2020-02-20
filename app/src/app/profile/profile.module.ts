@@ -5,6 +5,7 @@ import { UiModule } from '@kikstart/ui';
 
 import { PostModule } from '../post';
 import { ProfileService } from './profile.service';
+import { ProfileCardComponent } from './components/profile-card.component'
 import { ProfileDetailComponent } from './containers/profile-detail.component';
 
 const routes: Routes = [{ path: ':username', component: ProfileDetailComponent }];
@@ -12,6 +13,6 @@ const routes: Routes = [{ path: ':username', component: ProfileDetailComponent }
 @NgModule({
   imports: [UiModule, RouterModule.forChild(routes), PostModule],
   providers: [ProfileService],
-  declarations: [ProfileDetailComponent],
+  declarations: [ProfileCardComponent, ProfileDetailComponent],
 })
 export class ProfileModule {}

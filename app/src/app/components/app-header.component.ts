@@ -20,15 +20,10 @@ import { UiBrand, UiLink, UiUser } from '@kikstart/ui'
             <div class="mr-auto"></div>
             <ul class="navbar-nav mr-0">
               <app-header-link *ngFor="let link of rightLinks" [link]="link"></app-header-link>
-              <app-header-dropdown *ngIf="user && user?.developer" [links]="devLinks">
-                <ui-label class="mr-1" label="Development" icon="fa-bug"></ui-label>
-              </app-header-dropdown>
-              <app-header-dropdown *ngIf="user && user?.role === 'Admin' && adminLinks.length" [links]="adminLinks">
-                <ui-label class="mr-1" label="Admin" icon="fa-shield"></ui-label>
-              </app-header-dropdown>
               <app-header-dropdown [links]="userLinks">
                 <span *ngIf="showUsername && user?.username">{{ user?.username }}</span>
                 <ui-avatar *ngIf="user?.avatar" class="mx-1" size="sm" [avatar]="user?.avatar"></ui-avatar>
+                <span *ngIf="!user?.avatar" class="fa fa-user"></span>
               </app-header-dropdown>
             </ul>
           </div>

@@ -11,7 +11,7 @@ export class CommentService {
   comments(postId) {
     return this.prisma.client.comments({
       where: { post: { id: postId } },
-      orderBy: 'createdAt_ASC',
+      orderBy: 'created_ASC',
       first: 100,
     });
   }

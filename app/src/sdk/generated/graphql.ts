@@ -1,7 +1,10 @@
+/* tslint:disable */
 import gql from 'graphql-tag';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
+import * as ApolloCore from 'apollo-client';
 export type Maybe<T> = T | null;
+
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string,
@@ -23,7 +26,7 @@ export type Auth = {
 export type Comment = {
    __typename?: 'Comment',
   id: Scalars['String'],
-  createdAt: Scalars['Date'],
+  created: Scalars['Date'],
   text: Scalars['String'],
   author: Profile,
   post: Post,
@@ -121,7 +124,7 @@ export type MutationDeletePostArgs = {
 export type Post = {
    __typename?: 'Post',
   id: Scalars['String'],
-  createdAt: Scalars['Date'],
+  created: Scalars['Date'],
   text: Scalars['String'],
   author: Profile,
   commentCount: Scalars['Float'],
@@ -132,7 +135,7 @@ export type Post = {
 export type Profile = {
    __typename?: 'Profile',
   id: Scalars['String'],
-  createdAt: Scalars['Date'],
+  created: Scalars['Date'],
   username?: Maybe<Scalars['String']>,
   name?: Maybe<Scalars['String']>,
   avatar?: Maybe<Scalars['String']>,
@@ -152,8 +155,8 @@ export type Query = {
   posts: Array<Post>,
   userPosts: Array<Post>,
   post: Post,
-  profiles: Array<Profile>,
-  profile: Profile,
+  profiles?: Maybe<Array<Profile>>,
+  profile?: Maybe<Profile>,
 };
 
 
@@ -223,13 +226,13 @@ export type UpdateUserPasswordInput = {
 export type User = {
    __typename?: 'User',
   id: Scalars['String'],
-  createdAt: Scalars['Date'],
-  updatedAt: Scalars['Date'],
+  created: Scalars['Date'],
+  updated: Scalars['Date'],
   email: Scalars['String'],
   username?: Maybe<Scalars['String']>,
   name?: Maybe<Scalars['String']>,
   avatar?: Maybe<Scalars['String']>,
-  role: Role,
+  role?: Maybe<Role>,
 };
 
 export type UserDetailsFragment = (
@@ -281,7 +284,7 @@ export type AuthorDetailsFragment = (
 
 export type PostDetailsFragment = (
   { __typename?: 'Post' }
-  & Pick<Post, 'id' | 'text' | 'createdAt' | 'commentCount'>
+  & Pick<Post, 'id' | 'text' | 'created' | 'commentCount'>
   & { author: (
     { __typename?: 'Profile' }
     & AuthorDetailsFragment
@@ -290,7 +293,7 @@ export type PostDetailsFragment = (
 
 export type CommentDetailsFragment = (
   { __typename?: 'Comment' }
-  & Pick<Comment, 'id' | 'text' | 'createdAt'>
+  & Pick<Comment, 'id' | 'text' | 'created'>
   & { author: (
     { __typename?: 'Profile' }
     & AuthorDetailsFragment
@@ -387,10 +390,10 @@ export type ProfilesQueryVariables = {};
 
 export type ProfilesQuery = (
   { __typename?: 'Query' }
-  & { profiles: Array<(
+  & { profiles: Maybe<Array<(
     { __typename?: 'Profile' }
     & ProfileDetailsFragment
-  )> }
+  )>> }
 );
 
 export type ProfileQueryVariables = {
@@ -400,14 +403,14 @@ export type ProfileQueryVariables = {
 
 export type ProfileQuery = (
   { __typename?: 'Query' }
-  & { profile: (
+  & { profile: Maybe<(
     { __typename?: 'Profile' }
     & { posts: Maybe<Array<(
       { __typename?: 'Post' }
       & PostDetailsFragment
     )>> }
     & ProfileDetailsFragment
-  ) }
+  )> }
 );
 
 export const UserDetailsFragmentDoc = gql`
@@ -431,7 +434,7 @@ export const PostDetailsFragmentDoc = gql`
     fragment postDetails on Post {
   id
   text
-  createdAt
+  created
   commentCount
   author {
     ...authorDetails
@@ -442,7 +445,7 @@ export const CommentDetailsFragmentDoc = gql`
     fragment commentDetails on Comment {
   id
   text
-  createdAt
+  created
   author {
     ...authorDetails
   }
@@ -630,4 +633,107 @@ ${PostDetailsFragmentDoc}`;
   export class ProfileGQL extends Apollo.Query<ProfileQuery, ProfileQueryVariables> {
     document = ProfileDocument;
     
+  }
+
+  type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
+  interface WatchQueryOptionsAlone<V>
+    extends Omit<ApolloCore.WatchQueryOptions<V>, 'query' | 'variables'> {}
+    
+  interface QueryOptionsAlone<V>
+    extends Omit<ApolloCore.QueryOptions<V>, 'query' | 'variables'> {}
+    
+  interface MutationOptionsAlone<T, V>
+    extends Omit<ApolloCore.MutationOptions<T, V>, 'mutation' | 'variables'> {}
+    
+  interface SubscriptionOptionsAlone<V>
+    extends Omit<ApolloCore.SubscriptionOptions<V>, 'query' | 'variables'> {}
+
+  @Injectable({ providedIn: 'root' })
+  export class ApolloAngularSDK {
+    constructor(
+      private meGql: MeGQL,
+      private registerGql: RegisterGQL,
+      private loginGql: LoginGQL,
+      private postsGql: PostsGQL,
+      private userPostsGql: UserPostsGQL,
+      private postGql: PostGQL,
+      private commentsGql: CommentsGQL,
+      private createPostGql: CreatePostGQL,
+      private createCommentGql: CreateCommentGQL,
+      private profilesGql: ProfilesGQL,
+      private profileGql: ProfileGQL
+    ) {}
+      
+    me(variables?: MeQueryVariables, options?: QueryOptionsAlone<MeQueryVariables>) {
+      return this.meGql.fetch(variables, options)
+    }
+    
+    meWatch(variables?: MeQueryVariables, options?: WatchQueryOptionsAlone<MeQueryVariables>) {
+      return this.meGql.watch(variables, options)
+    }
+    
+    register(variables: RegisterMutationVariables, options?: MutationOptionsAlone<RegisterMutation, RegisterMutationVariables>) {
+      return this.registerGql.mutate(variables, options)
+    }
+    
+    login(variables: LoginMutationVariables, options?: MutationOptionsAlone<LoginMutation, LoginMutationVariables>) {
+      return this.loginGql.mutate(variables, options)
+    }
+    
+    posts(variables?: PostsQueryVariables, options?: QueryOptionsAlone<PostsQueryVariables>) {
+      return this.postsGql.fetch(variables, options)
+    }
+    
+    postsWatch(variables?: PostsQueryVariables, options?: WatchQueryOptionsAlone<PostsQueryVariables>) {
+      return this.postsGql.watch(variables, options)
+    }
+    
+    userPosts(variables: UserPostsQueryVariables, options?: QueryOptionsAlone<UserPostsQueryVariables>) {
+      return this.userPostsGql.fetch(variables, options)
+    }
+    
+    userPostsWatch(variables: UserPostsQueryVariables, options?: WatchQueryOptionsAlone<UserPostsQueryVariables>) {
+      return this.userPostsGql.watch(variables, options)
+    }
+    
+    post(variables: PostQueryVariables, options?: QueryOptionsAlone<PostQueryVariables>) {
+      return this.postGql.fetch(variables, options)
+    }
+    
+    postWatch(variables: PostQueryVariables, options?: WatchQueryOptionsAlone<PostQueryVariables>) {
+      return this.postGql.watch(variables, options)
+    }
+    
+    comments(variables: CommentsQueryVariables, options?: QueryOptionsAlone<CommentsQueryVariables>) {
+      return this.commentsGql.fetch(variables, options)
+    }
+    
+    commentsWatch(variables: CommentsQueryVariables, options?: WatchQueryOptionsAlone<CommentsQueryVariables>) {
+      return this.commentsGql.watch(variables, options)
+    }
+    
+    createPost(variables: CreatePostMutationVariables, options?: MutationOptionsAlone<CreatePostMutation, CreatePostMutationVariables>) {
+      return this.createPostGql.mutate(variables, options)
+    }
+    
+    createComment(variables: CreateCommentMutationVariables, options?: MutationOptionsAlone<CreateCommentMutation, CreateCommentMutationVariables>) {
+      return this.createCommentGql.mutate(variables, options)
+    }
+    
+    profiles(variables?: ProfilesQueryVariables, options?: QueryOptionsAlone<ProfilesQueryVariables>) {
+      return this.profilesGql.fetch(variables, options)
+    }
+    
+    profilesWatch(variables?: ProfilesQueryVariables, options?: WatchQueryOptionsAlone<ProfilesQueryVariables>) {
+      return this.profilesGql.watch(variables, options)
+    }
+    
+    profile(variables: ProfileQueryVariables, options?: QueryOptionsAlone<ProfileQueryVariables>) {
+      return this.profileGql.fetch(variables, options)
+    }
+    
+    profileWatch(variables: ProfileQueryVariables, options?: WatchQueryOptionsAlone<ProfileQueryVariables>) {
+      return this.profileGql.watch(variables, options)
+    }
   }

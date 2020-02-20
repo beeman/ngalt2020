@@ -13,11 +13,11 @@ query {
 
 
 query {
-    hello(name: "Medellín 🇨🇴")
+    hello(name: "Atlanta")
 }
 {
   "data": {
-    "hello": "Hello Medellín 🇨🇴"
+    "hello": "Hello Atlanta"
   }
 }
 

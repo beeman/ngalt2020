@@ -1,18 +1,18 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
-import { UiModule } from '@kikstart/ui';
+import { NgModule } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { HttpClientModule } from '@angular/common/http'
+import { RouterModule, Routes } from '@angular/router'
+import { UiModule } from '@kikstart/ui'
 
-import { AppHeaderDropdownComponent } from './components/app-header-dropdown.component';
-import { AppHeaderLinksComponent } from './components/app-header-links.component';
-import { AppLayoutComponent } from './components/app-layout.component';
-import { AppHeaderComponent } from './components/app-header.component';
-import { NotFoundComponent } from './components/not-found.component';
+import { AppHeaderDropdownComponent } from './components/app-header-dropdown.component'
+import { AppHeaderLinksComponent } from './components/app-header-links.component'
+import { AppLayoutComponent } from './components/app-layout.component'
+import { AppHeaderComponent } from './components/app-header.component'
+import { NotFoundComponent } from './components/not-found.component'
 
-import { AppComponent } from './app.component';
-import { AppGraphQLModule } from './app.graphql.module';
+import { AppComponent } from './app.component'
+import { AppGraphQLModule } from './app.graphql.module'
 
 const routes: Routes = [
   {
@@ -28,14 +28,14 @@ const routes: Routes = [
         path: 'profiles',
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
       },
-      {
-        path: '',
-        loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
-      },
-      { path: '**', component: NotFoundComponent },
     ],
   },
-];
+  {
+    path: '',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+  },
+  { path: '**', component: NotFoundComponent },
+]
 
 @NgModule({
   imports: [

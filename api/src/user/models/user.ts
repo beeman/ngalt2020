@@ -7,10 +7,10 @@ export class User {
   id: string;
 
   @Field()
-  createdAt: Date;
+  created: Date;
 
   @Field()
-  updatedAt: Date;
+  updated: Date;
 
   @Field()
   email: string;
@@ -27,7 +27,10 @@ export class User {
   // @Field({ nullable: true })
   // location?: string;
 
-  @Field(type => Role)
+  // @Field({ nullable: true })
+  // bio?: string;
+
+  @Field(type => Role, { nullable: true })
   role: Role;
 
   password?: string;

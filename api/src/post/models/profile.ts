@@ -7,7 +7,7 @@ export class Profile {
   id: string;
 
   @Field()
-  createdAt: Date;
+  created: Date;
 
   @Field({ nullable: true })
   username?: string;

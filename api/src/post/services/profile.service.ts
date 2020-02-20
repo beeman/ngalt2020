@@ -8,7 +8,7 @@ export class ProfileService {
 
   profiles() {
     return this.prisma.client.users({
-      orderBy: 'createdAt_ASC',
+      orderBy: 'created_ASC',
     });
   }
 

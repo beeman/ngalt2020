@@ -1,17 +1,12 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core'
+import { RouterModule, Routes } from '@angular/router'
 
-import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
+import { UiModule } from '@kikstart/ui'
 
-import { UiModule } from '@kikstart/ui';
-
-import { PostIndexComponent } from './containers/post-index.component';
-import { PostComponent } from './components/post.component';
-import { PostCommentsComponent } from './components/post-comments.component';
-import { PostFormComponent } from './components/post-form.component';
-import { PostService } from './post.service';
-import { PostAuthorComponent } from './components/post-author.component';
-import { PostButtonsComponent } from './components/post-buttons.component';
+import { BsModalService, ModalModule } from 'ngx-bootstrap/modal'
+import { PostModalComponent } from './components/post-modal.component'
+import { PostIndexComponent } from './containers/post-index.component'
+import { PostService } from './post.service'
 
 const routes: Routes = [{ path: '', component: PostIndexComponent }];
 
@@ -20,13 +15,8 @@ const routes: Routes = [{ path: '', component: PostIndexComponent }];
   providers: [BsModalService, PostService],
   declarations: [
     PostIndexComponent,
-    PostComponent,
-    PostCommentsComponent,
-    PostFormComponent,
-    PostAuthorComponent,
-    PostButtonsComponent,
+    PostModalComponent,
   ],
-  exports: [PostAuthorComponent],
-  entryComponents: [PostCommentsComponent],
+  entryComponents: [PostModalComponent],
 })
 export class PostModule {}

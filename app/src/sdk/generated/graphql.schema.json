@@ -330,19 +330,15 @@
             "description": "",
             "args": [],
             "type": {
-              "kind": "NON_NULL",
+              "kind": "LIST",
               "name": null,
               "ofType": {
-                "kind": "LIST",
+                "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "Profile",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "Profile",
+                  "ofType": null
                 }
               }
             },
@@ -369,13 +365,9 @@
               }
             ],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "Profile",
-                "ofType": null
-              }
+              "kind": "OBJECT",
+              "name": "Profile",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -428,7 +420,7 @@
             "deprecationReason": null
           },
           {
-            "name": "createdAt",
+            "name": "created",
             "description": "",
             "args": [],
             "type": {
@@ -444,7 +436,7 @@
             "deprecationReason": null
           },
           {
-            "name": "updatedAt",
+            "name": "updated",
             "description": "",
             "args": [],
             "type": {
@@ -516,13 +508,9 @@
             "description": "",
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "ENUM",
-                "name": "Role",
-                "ofType": null
-              }
+              "kind": "ENUM",
+              "name": "Role",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -598,7 +586,7 @@
             "deprecationReason": null
           },
           {
-            "name": "createdAt",
+            "name": "created",
             "description": "",
             "args": [],
             "type": {
@@ -689,7 +677,7 @@
             "deprecationReason": null
           },
           {
-            "name": "createdAt",
+            "name": "created",
             "description": "",
             "args": [],
             "type": {
@@ -812,7 +800,7 @@
             "deprecationReason": null
           },
           {
-            "name": "createdAt",
+            "name": "created",
             "description": "",
             "args": [],
             "type": {

@@ -1,13 +1,15 @@
 mutation {
   user0: createUser(
     data: {
+      id: "summer"
       username: "summer"
       password: "$2b$10$dqyYw5XovLjpmkYNiRDEWuwKaRAvLaG45fnXE5b3KTccKZcRPka2m" # "secret42"
       email: "summer@example.com"
       avatar: "https://imgur.com/Y4dT5W0.png"
       name: "Summer Smith"
-      location: "Who cares..."
-      bio: "Hey!"
+      role: USER
+#      location: "Who cares..."
+#      bio: "Hey!"
       posts: {
         create: [
           {
@@ -22,13 +24,15 @@ mutation {
 
   user1: createUser(
     data: {
+      id: "morty"
       username: "morty"
       password: "$2b$10$dqyYw5XovLjpmkYNiRDEWuwKaRAvLaG45fnXE5b3KTccKZcRPka2m" # "secret42"
       email: "morty@example.com"
       avatar: "https://imgur.com/Ca4c884.png"
       name: "Morty Smith"
-      location: "School!"
-      bio: "Hi there I'm Morty 🎉!"
+      role: USER
+#      location: "School!"
+#      bio: "Hi there I'm Morty 🎉!"
       posts: {
         create: [
           {
@@ -43,13 +47,15 @@ mutation {
 
   user2: createUser(
     data: {
+      id: "rick"
       username: "rick"
       password: "$2b$10$dqyYw5XovLjpmkYNiRDEWuwKaRAvLaG45fnXE5b3KTccKZcRPka2m" # "secret42"
       email: "rick@example.com"
       avatar: "https://imgur.com/0Ao2f63.png"
       name: "Rick Sanchez"
-      location: "Earth C-137"
-      bio: "I am the smartest guy in all universes!"
+      role: ADMIN
+#      location: "Earth C-137"
+#      bio: "I am the smartest guy in all universes!"
       posts: {
         create: {
           text: "Hello, I'm Rick and I love GraphQL"
@@ -75,13 +81,15 @@ mutation {
 
   user3: createUser(
     data: {
+      id: "beth"
       username: "beth"
       password: "$2b$10$dqyYw5XovLjpmkYNiRDEWuwKaRAvLaG45fnXE5b3KTccKZcRPka2m" # "secret42"
       email: "beth@example.com"
       avatar: "https://imgur.com/o28uw9C.png"
       name: "Beth Smith"
-      location: "Earth"
-      bio: "Vetenarian"
+      role: USER
+#      location: "Earth"
+#      bio: "Vetenarian"
       posts: {
         create: [
           {
@@ -96,13 +104,15 @@ mutation {
 
   user4: createUser(
     data: {
+      id: "jerry"
       username: "jerry"
       password: "$2b$10$dqyYw5XovLjpmkYNiRDEWuwKaRAvLaG45fnXE5b3KTccKZcRPka2m" # "secret42"
       email: "jerry@example.com"
       avatar: "https://imgur.com/Yr4YiTi.png"
       name: "Jerry Smith"
-      location: "Earth"
-      bio: "Husband of @beth"
+      role: USER
+#      location: "Earth"
+#      bio: "Husband of @beth"
       posts: {
         create: [
           {

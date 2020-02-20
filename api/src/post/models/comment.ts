@@ -8,7 +8,7 @@ export class Comment {
   id: string;
 
   @Field()
-  createdAt: Date;
+  created: Date;
 
   @Field()
   text: string;

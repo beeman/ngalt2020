@@ -3,7 +3,7 @@ datamodel: datamodel.prisma
 
 generate:
   - generator: typescript-client
-    output: ../api/src/prisma/generated/prisma-client/
+    output: ../src/prisma/generated/prisma-client/
 
 seed:
   import: seed.graphql
