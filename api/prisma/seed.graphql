@@ -9,7 +9,7 @@ mutation {
       name: "Summer Smith"
       role: USER
 #      location: "Who cares..."
-#      bio: "Hey!"
+      bio: "Hey!"
       posts: {
         create: [
           {
@@ -32,7 +32,7 @@ mutation {
       name: "Morty Smith"
       role: USER
 #      location: "School!"
-#      bio: "Hi there I'm Morty 🎉!"
+      bio: "Hi there I'm Morty 🎉!"
       posts: {
         create: [
           {
@@ -55,7 +55,7 @@ mutation {
       name: "Rick Sanchez"
       role: ADMIN
 #      location: "Earth C-137"
-#      bio: "I am the smartest guy in all universes!"
+      bio: "I am the smartest guy in all universes!"
       posts: {
         create: {
           text: "Hello, I'm Rick and I love GraphQL"
@@ -89,7 +89,7 @@ mutation {
       name: "Beth Smith"
       role: USER
 #      location: "Earth"
-#      bio: "Vetenarian"
+      bio: "Vetenarian"
       posts: {
         create: [
           {
@@ -112,7 +112,7 @@ mutation {
       name: "Jerry Smith"
       role: USER
 #      location: "Earth"
-#      bio: "Husband of @beth"
+      bio: "Husband of @beth"
       posts: {
         create: [
           {

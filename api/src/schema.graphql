@@ -77,7 +77,7 @@ type Profile {
 }
 
 type Query {
-  hello(name: String!): String!
+  hello(name: String): String!
   uptime: Float!
   me: User!
   users(skip: Int, after: String, before: String, first: Int, last: Int, query: String): [User!]!
@@ -123,5 +123,6 @@ type User {
   username: String
   name: String
   avatar: String
+  bio: String
   role: Role
 }

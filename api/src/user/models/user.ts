@@ -27,8 +27,8 @@ export class User {
   // @Field({ nullable: true })
   // location?: string;
 
-  // @Field({ nullable: true })
-  // bio?: string;
+  @Field({ nullable: true })
+  bio?: string;
 
   @Field(type => Role, { nullable: true })
   role: Role;

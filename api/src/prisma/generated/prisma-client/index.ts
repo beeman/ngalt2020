@@ -222,6 +222,8 @@ export type UserOrderByInput =
   | "role_DESC"
   | "name_ASC"
   | "name_DESC"
+  | "bio_ASC"
+  | "bio_DESC"
   | "avatar_ASC"
   | "avatar_DESC";
 
@@ -395,6 +397,20 @@ export interface UserWhereInput {
   name_not_starts_with?: Maybe<String>;
   name_ends_with?: Maybe<String>;
   name_not_ends_with?: Maybe<String>;
+  bio?: Maybe<String>;
+  bio_not?: Maybe<String>;
+  bio_in?: Maybe<String[] | String>;
+  bio_not_in?: Maybe<String[] | String>;
+  bio_lt?: Maybe<String>;
+  bio_lte?: Maybe<String>;
+  bio_gt?: Maybe<String>;
+  bio_gte?: Maybe<String>;
+  bio_contains?: Maybe<String>;
+  bio_not_contains?: Maybe<String>;
+  bio_starts_with?: Maybe<String>;
+  bio_not_starts_with?: Maybe<String>;
+  bio_ends_with?: Maybe<String>;
+  bio_not_ends_with?: Maybe<String>;
   avatar?: Maybe<String>;
   avatar_not?: Maybe<String>;
   avatar_in?: Maybe<String[] | String>;
@@ -512,6 +528,7 @@ export interface UserCreateWithoutPostsInput {
   password: String;
   role?: Maybe<Role>;
   name?: Maybe<String>;
+  bio?: Maybe<String>;
   avatar?: Maybe<String>;
 }
 
@@ -527,6 +544,7 @@ export interface UserCreateInput {
   password: String;
   role?: Maybe<Role>;
   name?: Maybe<String>;
+  bio?: Maybe<String>;
   avatar?: Maybe<String>;
   posts?: Maybe<PostCreateManyWithoutAuthorInput>;
 }
@@ -597,6 +615,7 @@ export interface UserUpdateWithoutPostsDataInput {
   password?: Maybe<String>;
   role?: Maybe<Role>;
   name?: Maybe<String>;
+  bio?: Maybe<String>;
   avatar?: Maybe<String>;
 }
 
@@ -627,15 +646,16 @@ export interface UserUpdateManyInput {
 
 export interface UserUpdateWithWhereUniqueNestedInput {
   where: UserWhereUniqueInput;
-  data: UserupdatedaInput;
+  data: UserUpdateDataInput;
 }
 
-export interface UserupdatedaInput {
+export interface UserUpdateDataInput {
   username?: Maybe<String>;
   email?: Maybe<String>;
   password?: Maybe<String>;
   role?: Maybe<Role>;
   name?: Maybe<String>;
+  bio?: Maybe<String>;
   avatar?: Maybe<String>;
   posts?: Maybe<PostUpdateManyWithoutAuthorInput>;
 }
@@ -708,13 +728,13 @@ export interface CommentUpdateWithoutPostDataInput {
 
 export interface UserUpdateOneRequiredInput {
   create?: Maybe<UserCreateInput>;
-  update?: Maybe<UserupdatedaInput>;
+  update?: Maybe<UserUpdateDataInput>;
   upsert?: Maybe<UserUpsertNestedInput>;
   connect?: Maybe<UserWhereUniqueInput>;
 }
 
 export interface UserUpsertNestedInput {
-  update: UserupdatedaInput;
+  update: UserUpdateDataInput;
   create: UserCreateInput;
 }
 
@@ -868,7 +888,7 @@ export interface PostUpdateManyDataInput {
 
 export interface UserUpsertWithWhereUniqueNestedInput {
   where: UserWhereUniqueInput;
-  update: UserupdatedaInput;
+  update: UserUpdateDataInput;
   create: UserCreateInput;
 }
 
@@ -963,6 +983,20 @@ export interface UserScalarWhereInput {
   name_not_starts_with?: Maybe<String>;
   name_ends_with?: Maybe<String>;
   name_not_ends_with?: Maybe<String>;
+  bio?: Maybe<String>;
+  bio_not?: Maybe<String>;
+  bio_in?: Maybe<String[] | String>;
+  bio_not_in?: Maybe<String[] | String>;
+  bio_lt?: Maybe<String>;
+  bio_lte?: Maybe<String>;
+  bio_gt?: Maybe<String>;
+  bio_gte?: Maybe<String>;
+  bio_contains?: Maybe<String>;
+  bio_not_contains?: Maybe<String>;
+  bio_starts_with?: Maybe<String>;
+  bio_not_starts_with?: Maybe<String>;
+  bio_ends_with?: Maybe<String>;
+  bio_not_ends_with?: Maybe<String>;
   avatar?: Maybe<String>;
   avatar_not?: Maybe<String>;
   avatar_in?: Maybe<String[] | String>;
@@ -993,6 +1027,7 @@ export interface UserUpdateManyDataInput {
   password?: Maybe<String>;
   role?: Maybe<Role>;
   name?: Maybe<String>;
+  bio?: Maybe<String>;
   avatar?: Maybe<String>;
 }
 
@@ -1036,6 +1071,7 @@ export interface UserUpdateInput {
   password?: Maybe<String>;
   role?: Maybe<Role>;
   name?: Maybe<String>;
+  bio?: Maybe<String>;
   avatar?: Maybe<String>;
   posts?: Maybe<PostUpdateManyWithoutAuthorInput>;
 }
@@ -1046,6 +1082,7 @@ export interface UserUpdateManyMutationInput {
   password?: Maybe<String>;
   role?: Maybe<Role>;
   name?: Maybe<String>;
+  bio?: Maybe<String>;
   avatar?: Maybe<String>;
 }
 
@@ -1230,6 +1267,7 @@ export interface User {
   password: String;
   role: Role;
   name?: String;
+  bio?: String;
   avatar?: String;
 }
 
@@ -1242,6 +1280,7 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   password: () => Promise<String>;
   role: () => Promise<Role>;
   name: () => Promise<String>;
+  bio: () => Promise<String>;
   avatar: () => Promise<String>;
   posts: <T = FragmentableArray<Post>>(args?: {
     where?: PostWhereInput;
@@ -1265,6 +1304,7 @@ export interface UserSubscription
   password: () => Promise<AsyncIterator<String>>;
   role: () => Promise<AsyncIterator<Role>>;
   name: () => Promise<AsyncIterator<String>>;
+  bio: () => Promise<AsyncIterator<String>>;
   avatar: () => Promise<AsyncIterator<String>>;
   posts: <T = Promise<AsyncIterator<PostSubscription>>>(args?: {
     where?: PostWhereInput;
@@ -1288,6 +1328,7 @@ export interface UserNullablePromise
   password: () => Promise<String>;
   role: () => Promise<Role>;
   name: () => Promise<String>;
+  bio: () => Promise<String>;
   avatar: () => Promise<String>;
   posts: <T = FragmentableArray<Post>>(args?: {
     where?: PostWhereInput;
@@ -1641,6 +1682,7 @@ export interface UserPreviousValues {
   password: String;
   role: Role;
   name?: String;
+  bio?: String;
   avatar?: String;
 }
 
@@ -1655,6 +1697,7 @@ export interface UserPreviousValuesPromise
   password: () => Promise<String>;
   role: () => Promise<Role>;
   name: () => Promise<String>;
+  bio: () => Promise<String>;
   avatar: () => Promise<String>;
 }
 
@@ -1669,6 +1712,7 @@ export interface UserPreviousValuesSubscription
   password: () => Promise<AsyncIterator<String>>;
   role: () => Promise<AsyncIterator<Role>>;
   name: () => Promise<AsyncIterator<String>>;
+  bio: () => Promise<AsyncIterator<String>>;
   avatar: () => Promise<AsyncIterator<String>>;
 }
 

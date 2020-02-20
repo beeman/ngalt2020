@@ -7,7 +7,7 @@ type User {
   password: String!
   role: Role! @default(value: USER)
   name: String
-#  bio: String
+  bio: String
 #  location: String
   avatar: String
   posts: [Post]! @relation(name: "PostsByUser")

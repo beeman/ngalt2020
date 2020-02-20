@@ -568,7 +568,6 @@ export default class Presentation extends React.Component {
             <AppearItem>Install Apollo GraphQL client</AppearItem>
             <AppearItem><span style={{ fontFamily: "monospace" }}>{" "}$ ng add apollo-graphql</span></AppearItem>
             <AppearItem>Use classes and types from SDK.</AppearItem>
-            <AppearItem>Custom wrapper around SDK.</AppearItem>
             <AppearItem>Use SDK in Ionic, NativeScript.</AppearItem>
           </List>
         </Slide>
@@ -623,8 +622,8 @@ export default class Presentation extends React.Component {
         <Slide transition={["fade"]} bgColor="primary" textColor="light">
           <Heading size={1} fit textColor="secondary">graphqlwithangular.com</Heading>
           <List style={{ textAlign: "center" }}>
-            <ListItem>Complete course in January!</ListItem>
-            <ListItem>Free e-book in December!</ListItem>
+            <ListItem>Working on a complete course!</ListItem>
+            <ListItem>Free e-book soon!</ListItem>
             <ListItem>Sign up now!</ListItem>
             <ListItem>
               <br />

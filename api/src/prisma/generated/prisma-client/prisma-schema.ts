@@ -643,6 +643,7 @@ type User {
   password: String!
   role: Role!
   name: String
+  bio: String
   avatar: String
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
 }
@@ -660,6 +661,7 @@ input UserCreateInput {
   password: String!
   role: Role
   name: String
+  bio: String
   avatar: String
   posts: PostCreateManyWithoutAuthorInput
 }
@@ -686,6 +688,7 @@ input UserCreateWithoutPostsInput {
   password: String!
   role: Role
   name: String
+  bio: String
   avatar: String
 }
 
@@ -711,6 +714,8 @@ enum UserOrderByInput {
   role_DESC
   name_ASC
   name_DESC
+  bio_ASC
+  bio_DESC
   avatar_ASC
   avatar_DESC
 }
@@ -724,6 +729,7 @@ type UserPreviousValues {
   password: String!
   role: Role!
   name: String
+  bio: String
   avatar: String
 }
 
@@ -818,6 +824,20 @@ input UserScalarWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  bio: String
+  bio_not: String
+  bio_in: [String!]
+  bio_not_in: [String!]
+  bio_lt: String
+  bio_lte: String
+  bio_gt: String
+  bio_gte: String
+  bio_contains: String
+  bio_not_contains: String
+  bio_starts_with: String
+  bio_not_starts_with: String
+  bio_ends_with: String
+  bio_not_ends_with: String
   avatar: String
   avatar_not: String
   avatar_in: [String!]
@@ -855,12 +875,13 @@ input UserSubscriptionWhereInput {
   NOT: [UserSubscriptionWhereInput!]
 }
 
-input UserupdatedaInput {
+input UserUpdateDataInput {
   username: String
   email: String
   password: String
   role: Role
   name: String
+  bio: String
   avatar: String
   posts: PostUpdateManyWithoutAuthorInput
 }
@@ -871,6 +892,7 @@ input UserUpdateInput {
   password: String
   role: Role
   name: String
+  bio: String
   avatar: String
   posts: PostUpdateManyWithoutAuthorInput
 }
@@ -881,6 +903,7 @@ input UserUpdateManyDataInput {
   password: String
   role: Role
   name: String
+  bio: String
   avatar: String
 }
 
@@ -902,6 +925,7 @@ input UserUpdateManyMutationInput {
   password: String
   role: Role
   name: String
+  bio: String
   avatar: String
 }
 
@@ -912,7 +936,7 @@ input UserUpdateManyWithWhereNestedInput {
 
 input UserUpdateOneRequiredInput {
   create: UserCreateInput
-  update: UserupdatedaInput
+  update: UserUpdateDataInput
   upsert: UserUpsertNestedInput
   connect: UserWhereUniqueInput
 }
@@ -930,16 +954,17 @@ input UserUpdateWithoutPostsDataInput {
   password: String
   role: Role
   name: String
+  bio: String
   avatar: String
 }
 
 input UserUpdateWithWhereUniqueNestedInput {
   where: UserWhereUniqueInput!
-  data: UserupdatedaInput!
+  data: UserUpdateDataInput!
 }
 
 input UserUpsertNestedInput {
-  update: UserupdatedaInput!
+  update: UserUpdateDataInput!
   create: UserCreateInput!
 }
 
@@ -950,7 +975,7 @@ input UserUpsertWithoutPostsInput {
 
 input UserUpsertWithWhereUniqueNestedInput {
   where: UserWhereUniqueInput!
-  update: UserupdatedaInput!
+  update: UserUpdateDataInput!
   create: UserCreateInput!
 }
 
@@ -1045,6 +1070,20 @@ input UserWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  bio: String
+  bio_not: String
+  bio_in: [String!]
+  bio_not_in: [String!]
+  bio_lt: String
+  bio_lte: String
+  bio_gt: String
+  bio_gte: String
+  bio_contains: String
+  bio_not_contains: String
+  bio_starts_with: String
+  bio_not_starts_with: String
+  bio_ends_with: String
+  bio_not_ends_with: String
   avatar: String
   avatar_not: String
   avatar_in: [String!]

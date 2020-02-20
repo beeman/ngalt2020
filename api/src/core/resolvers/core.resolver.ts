@@ -7,7 +7,9 @@ export class CoreResolver {
   constructor(private service: CoreService) {}
 
   @Query(returns => String)
-  hello(@Args('name') name: string): string {
+  hello(
+    @Args({ name: 'name', type: () => String, nullable: true }) name?: string,
+  ): string {
     return this.service.hello(name);
   }
 

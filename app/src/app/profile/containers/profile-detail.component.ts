@@ -13,7 +13,7 @@ import { Profile } from 'src/sdk'
           [avatar]="profile.avatar"
           [username]="profile.username"
           [name]="profile.name"
-          [bio]="'Bio Placeholder'"
+          [bio]="profile.bio"
           [location]="'Location Placeholder'"
         >
         </app-profile-card>

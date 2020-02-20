@@ -161,7 +161,7 @@ export type Query = {
 
 
 export type QueryHelloArgs = {
-  name: Scalars['String']
+  name?: Maybe<Scalars['String']>
 };
 
 
@@ -232,6 +232,7 @@ export type User = {
   username?: Maybe<Scalars['String']>,
   name?: Maybe<Scalars['String']>,
   avatar?: Maybe<Scalars['String']>,
+  bio?: Maybe<Scalars['String']>,
   role?: Maybe<Role>,
 };
 
@@ -382,7 +383,7 @@ export type CreateCommentMutation = (
 
 export type ProfileDetailsFragment = (
   { __typename?: 'Profile' }
-  & Pick<Profile, 'id' | 'username' | 'avatar' | 'name' | 'bio' | 'location'>
+  & Pick<Profile, 'id' | 'username' | 'avatar' | 'name' | 'bio'>
 );
 
 export type ProfilesQueryVariables = {};
@@ -458,7 +459,6 @@ export const ProfileDetailsFragmentDoc = gql`
   avatar
   name
   bio
-  location
 }
     `;
 export const MeDocument = gql`
