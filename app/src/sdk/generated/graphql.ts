@@ -9,7 +9,6 @@ export type Scalars = {
   Boolean: boolean,
   Int: number,
   Float: number,
-  /** Date custom scalar type */
   Date: any,
 };
 
@@ -17,7 +16,6 @@ export type Scalars = {
 
 export type Auth = {
    __typename?: 'Auth',
-  /** JWT Bearer token */
   token: Scalars['String'],
   user: User,
 };
@@ -206,7 +204,6 @@ export type RegisterInput = {
   password: Scalars['String'],
 };
 
-/** User role */
 export enum Role {
   Admin = 'ADMIN',
   User = 'USER'
