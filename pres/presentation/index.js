@@ -566,7 +566,7 @@ export default class Presentation extends React.Component {
           <Heading size={5} textColor="secondary">Angular (Frontend)</Heading>
           <List>
             <AppearItem>Install Apollo GraphQL client</AppearItem>
-            <AppearItem><span style={{ fontFamily: "monospace" }}>{" "}$ ng add apollo-graphql</span></AppearItem>
+            <AppearItem><span style={{ fontFamily: "monospace" }}>{" "}$ ng add apollo-angular</span></AppearItem>
             <AppearItem>Use classes and types from SDK.</AppearItem>
             <AppearItem>Use SDK in Ionic, NativeScript.</AppearItem>
           </List>
