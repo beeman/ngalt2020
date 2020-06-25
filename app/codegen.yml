@@ -13,3 +13,11 @@ generates:
   src/sdk/generated/graphql.schema.json:
     plugins:
       - "introspection"
+
+
+
+hooks:
+  afterAllFileWrite:
+    - prettier --write
+
+
